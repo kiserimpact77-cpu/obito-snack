@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Snake Multiverse - Local Multiplayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="snake-style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Main Menu -->
+        <div id="menu-screen" class="screen active">
+            <div class="logo-container">
+                <h1 class="game-title">SNAKE<span>MULTIVERSE</span></h1>
+                <p class="game-subtitle">Shared Phone Multiplayer</p>
+            </div>
+            
+            <div class="menu-actions">
+                <div class="player-selection">
+                    <p>Select Number of Players</p>
+                    <div class="player-options">
+                        <button class="player-opt" data-players="2">2</button>
+                        <button class="player-opt active" data-players="3">3</button>
+                        <button class="player-opt" data-players="4">4</button>
+                    </div>
+                </div>
+                <button id="start-btn" class="btn-primary">START UNIVERSE</button>
+                <button id="how-to-btn" class="btn-secondary">HOW TO PLAY</button>
+            </div>
+        </div>
+
+        <!-- How to Play -->
+        <div id="how-to-screen" class="screen hidden">
+            <div class="panel">
+                <h2>How to Play</h2>
+                <div class="instructions">
+                    <div class="instruction-item">
+                        <div class="icon-wrap"><i data-lucide="smartphone"></i></div>
+                        <p>One phone, multiple friends. Use the joysticks in your corner.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="icon-wrap"><i data-lucide="apple"></i></div>
+                        <p>Eat energy orbs to grow longer and score points.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="icon-wrap"><i data-lucide="zap"></i></div>
+                        <p>Don't hit other snakes' bodies. Head-on collisions are lethal!</p>
+                    </div>
+                </div>
+                <button class="btn-secondary back-to-menu">GOT IT</button>
+            </div>
+        </div>
+
+        <!-- Countdown Overlay -->
+        <div id="countdown-overlay" class="overlay hidden">
+            <span id="countdown-text">3</span>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <!-- Canvas for the game -->
+            <canvas id="game-canvas"></canvas>
+            
+            <!-- HUD -->
+            <div id="game-hud">
+                <div class="score-board" id="score-board">
+                    <!-- Populated by JS -->
+                </div>
+                <button id="pause-btn" class="icon-btn"><i data-lucide="pause"></i></button>
+            </div>
+
+            <!-- Virtual Controls (Overlaid) -->
+            <div id="controls-container">
+                <!-- Joysticks populated by JS based on player count -->
+            </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay" class="overlay hidden">
+            <div class="panel">
+                <h2>GAME PAUSED</h2>
+                <div class="pause-actions">
+                    <button id="resume-btn" class="btn-primary">RESUME</button>
+                    <button class="btn-secondary restart-btn">RESTART</button>
+                    <button class="btn-secondary back-to-menu">QUIT TO MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over / Results Screen -->
+        <div id="results-screen" class="screen hidden">
+            <div class="panel">
+                <h2 id="winner-text">PLAYER 1 WINS!</h2>
+                <div id="rankings-list">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="results-actions">
+                    <button class="btn-primary restart-btn">PLAY AGAIN</button>
+                    <button class="btn-secondary back-to-menu">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast / Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="snake-game.js"></script>
+</body>
+</html>
